@@ -11,7 +11,7 @@ let counter = 0;
 function showTasks(arrayTasks){
     let tasks = '';
     for(let i = 0; i < arrayTasks.length; i++){
-        tasks += ` <li><input type="checkbox" onclick="hightlightAsCompleted(${arrayTasks[i].id})">${arrayTasks[i].content}</li>`;
+        tasks += ` <li><input type="checkbox" onclick="hightlightAsCompleted(event)">${arrayTasks[i].content}</li>`;
     };
     tasksList.innerHTML = tasks;
 };
@@ -27,15 +27,19 @@ function addTask(){
             showTasks(arrayTask);
         };
     });
-    
 };
 
 /////////////////////////////////////////////////////
 //////// Function to mark a task as completed ///////
-function hightlightAsCompleted(idCheckbox){
-    // TODO : Finish the highlight function to mark a task as completed
-    const itemTask = arrayTask.find(task => idCheckbox === task.id);
-
+function hightlightAsCompleted(event){
+    const inputCheckbox = event.target; // the element who throw the event (the input)
+    console.log(inputCheckbox);
+    let itemTask = inputCheckbox.parentElement; // the parent element of the element who throw the event (the li)
+    if(inputCheckbox.checked){
+        itemTask.style.textDecoration = 'line-through';
+    }else{
+        itemTask.style.textDecoration = 'none';
+    };
 }
 
 //////////////////////////////////////////////////////////////

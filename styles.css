@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container-todo-list{
+    border: 1px solid #777;
+    width: 100%;
+    max-width: 35%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 2rem;
+}
+
+.container-header{
+    padding: 1rem;
+}
+
+.container-header h1{
+    color: rgb(3, 3, 44);
+    font-weight: 800;
+}
+
+.container-input{
+    width: 70%;
+}
+
+.container-input input{
+    padding: 1.2rem;
+    width: 100%;
+    background-color: #ecececc7;
+    border: none;
+    border-radius: 3rem;
+    color: gray;
+    font-size: 1rem;
+}
+
+.container-tasks{
+    padding: 1rem;
+}
+
+input[type="checkbox"]{
+    padding: 50px;
+    margin-right: 0.5rem;
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.tasks-list li{
+    list-style-type: none;
+    font-size: 1.1rem;
+}
+

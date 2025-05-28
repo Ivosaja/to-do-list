@@ -26,3 +26,15 @@ Podés probar la app abriendo directamente el archivo `index.html` en tu navegad
 - Filtros por estado: todas, completadas, pendientes
 - Contador de tareas activas
 - Diseño responsive
+
+## 🧑‍💻 Contribuciones
+
+¿Querés aportar? ¡Estás invitado! Abrí un issue o mandá un pull request.
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT.
+
+---
+
+Made with ❤️ by [Ivosaja](https://github.com/Ivosaja)

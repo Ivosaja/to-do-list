@@ -14,14 +14,14 @@ function showTasks(arrayTasks){
         if(arrayTasks[i].completed){
             tasks += `  <li style="text-decoration:line-through;">
                             <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
-                            ${arrayTasks[i].content}
-                            <i class="fa-solid fa-x" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                            <span class="task-content">${arrayTasks[i].content}</span>
+                            <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
                         </li>`;
         }else{
             tasks += `  <li>
                             <input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
-                            ${arrayTasks[i].content}
-                            <i class="fa-solid fa-x" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                            <span class="task-content">${arrayTasks[i].content}</span>
+                            <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
                         </li>`;
         }
     };
@@ -47,11 +47,14 @@ function hightlightAsCompleted(event, id){
     const newTask = arrayTask.find(task => task.id === id);
     const inputCheckbox = event.target; // the element who throw the event (the input)
     let itemTask = inputCheckbox.parentElement; // the parent element of the element who throw the event (the li)
+    const taskContent = itemTask.querySelector('.task-content');
     if(inputCheckbox.checked){
-        itemTask.style.textDecoration = 'line-through';
+        taskContent.style.textDecoration = 'line-through';
+        taskContent.style.color = 'gray';
         newTask.completed = true;
     }else{
-        itemTask.style.textDecoration = 'none';
+        taskContent.style.textDecoration = 'none';
+        taskContent.style.color = 'black';
         newTask.completed = false;
     };
 }

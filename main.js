@@ -2,6 +2,7 @@
 ////// GLOBAL VARIABLES //////
 const inputTask = document.getElementById('taskInput');
 const tasksList = document.querySelector('.tasks-list');
+const buttonsDelete = document.querySelectorAll('.btn-delete');
 let arrayTask = [];
 let tasks = '';
 let counter = 0;
@@ -12,9 +13,17 @@ function showTasks(arrayTasks){
     let tasks = '';
     for(let i = 0; i < arrayTasks.length; i++){
         if(arrayTasks[i].completed){
-            tasks += `<li style="text-decoration:line-through;"><input type="checkbox" checked=true onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">${arrayTasks[i].content}</li>`;
+            tasks += `  <li style="text-decoration:line-through;">
+                            <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
+                            ${arrayTasks[i].content}
+                            <i class="fa-solid fa-x btn-delete"></i>
+                        </li>`;
         }else{
-            tasks += `<li><input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">${arrayTasks[i].content}</li>`;
+            tasks += `  <li>
+                            <input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
+                            ${arrayTasks[i].content}
+                            <i class="fa-solid fa-x btn-delete"></i>
+                        </li>`;
         }
     };
     tasksList.innerHTML = tasks;
@@ -27,9 +36,7 @@ function addTask(){
         if(e.key === 'Enter'){
             arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
             counter ++;
-            console.log(counter);
             inputTask.value = '';
-            console.log(arrayTask);
             showTasks(arrayTask);
         };
     });
@@ -55,6 +62,13 @@ function hightlightAsCompleted(event, id){
 function deleteTask(){
     // TODO: Finish the delete function to delete whatever task you want
 }
+
+////////////////////////////////////////////
+///// Function to delete all the tasks /////
+function deleteAllTasks(){
+    // TODO: Finish the deleteAllTasks function to delete all the tasks 
+}
+
 
 /////////////////////////////////////////////////
 //// Function to initialize some functions //////

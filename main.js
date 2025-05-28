@@ -2,7 +2,6 @@
 ////// GLOBAL VARIABLES //////
 const inputTask = document.getElementById('taskInput');
 const tasksList = document.querySelector('.tasks-list');
-const buttonsDelete = document.querySelectorAll('.btn-delete');
 let arrayTask = [];
 let tasks = '';
 let counter = 0;
@@ -16,13 +15,13 @@ function showTasks(arrayTasks){
             tasks += `  <li style="text-decoration:line-through;">
                             <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
                             ${arrayTasks[i].content}
-                            <i class="fa-solid fa-x btn-delete"></i>
+                            <i class="fa-solid fa-x" onclick="deleteTask(${arrayTasks[i].id})"></i>
                         </li>`;
         }else{
             tasks += `  <li>
                             <input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
                             ${arrayTasks[i].content}
-                            <i class="fa-solid fa-x btn-delete"></i>
+                            <i class="fa-solid fa-x" onclick="deleteTask(${arrayTasks[i].id})"></i>
                         </li>`;
         }
     };
@@ -59,22 +58,25 @@ function hightlightAsCompleted(event, id){
 
 //////////////////////////////////////////////////////////////
 //////// Function to delete a task from the to-do list ///////
-function deleteTask(){
-    // TODO: Finish the delete function to delete whatever task you want
-}
+function deleteTask(id){
+    const indexTaskDeleted = arrayTask.findIndex(task => id === task.id);
+    arrayTask.splice(indexTaskDeleted,1);
+    showTasks(arrayTask);
+    console.log(arrayTask);
+};
 
 ////////////////////////////////////////////
 ///// Function to delete all the tasks /////
 function deleteAllTasks(){
     // TODO: Finish the deleteAllTasks function to delete all the tasks 
-}
+};
 
 
 /////////////////////////////////////////////////
 //// Function to initialize some functions //////
 function init(){
     addTask();
-}
+};
 
 init();
 

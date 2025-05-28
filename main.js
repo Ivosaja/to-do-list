@@ -72,8 +72,10 @@ function deleteTask(id){
 ////////////////////////////////////////////
 ///// Function to delete all the tasks /////
 function deleteAllTasks(){
-    
-
+    binTrash.addEventListener('click', () =>{
+        arrayTask = [];
+        showTasks(arrayTask);
+    })
 };
 
 
@@ -81,6 +83,7 @@ function deleteAllTasks(){
 //// Function to initialize some functions //////
 function init(){
     addTask();
+    deleteAllTasks();
 };
 
 init();

@@ -35,6 +35,20 @@ body{
 
 .container-input{
     width: 70%;
+    display: flex;
+    justify-content: center;
+    gap: 1.3rem;
+}
+
+.container-input i{
+    font-size: 1.6rem;
+    color: rgb(179, 55, 55);
+    display: flex;
+    align-items: center;
+}
+
+.container-input i:hover{
+    color: rgb(236, 121, 121);
 }
 
 .container-input input{

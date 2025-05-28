@@ -2,6 +2,7 @@
 ////// GLOBAL VARIABLES //////
 const inputTask = document.getElementById('taskInput');
 const tasksList = document.querySelector('.tasks-list');
+const binTrash = document.getElementById('btn-binTrash');
 let arrayTask = [];
 let tasks = '';
 let counter = 0;
@@ -71,7 +72,8 @@ function deleteTask(id){
 ////////////////////////////////////////////
 ///// Function to delete all the tasks /////
 function deleteAllTasks(){
-    // TODO: Finish the deleteAllTasks function to delete all the tasks 
+    
+
 };
 
 

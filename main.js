@@ -34,6 +34,7 @@ function showTasks(arrayTasks){
 function addTask(){
     inputTask.addEventListener('keyup', (e) => {
         if(e.key === 'Enter'){
+            // TODO: Validate if the input value is an empty string
             arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
             counter ++;
             inputTask.value = '';

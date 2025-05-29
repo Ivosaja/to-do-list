@@ -13,9 +13,9 @@ function showTasks(arrayTasks){
     let tasks = '';
     for(let i = 0; i < arrayTasks.length; i++){
         if(arrayTasks[i].completed){
-            tasks += `  <li style="text-decoration:line-through;">
+            tasks += `  <li>
                             <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
-                            <span class="task-content">${arrayTasks[i].content}</span>
+                            <span class="task-content" style="text-decoration:line-through;color:gray">${arrayTasks[i].content}</span>
                             <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
                         </li>`;
         }else{
@@ -37,6 +37,8 @@ function addTask(){
             arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
             counter ++;
             inputTask.value = '';
+            localStorage.setItem('counter', counter);
+            localStorage.setItem('tasks', JSON.stringify(arrayTask));
             showTasks(arrayTask);
         };
     });
@@ -58,6 +60,7 @@ function hightlightAsCompleted(event, id){
         taskContent.style.color = 'black';
         newTask.completed = false;
     };
+    localStorage.setItem('tasks', JSON.stringify(arrayTask));
 }
 
 //////////////////////////////////////////////////////////////
@@ -65,8 +68,8 @@ function hightlightAsCompleted(event, id){
 function deleteTask(id){
     const indexTaskDeleted = arrayTask.findIndex(task => id === task.id);
     arrayTask.splice(indexTaskDeleted,1);
+    localStorage.setItem('tasks', JSON.stringify(arrayTask));
     showTasks(arrayTask);
-    console.log(arrayTask);
 };
 
 ////////////////////////////////////////////
@@ -74,14 +77,22 @@ function deleteTask(id){
 function deleteAllTasks(){
     binTrash.addEventListener('click', () =>{
         arrayTask = [];
+        counter = 0;
+        localStorage.setItem('tasks', JSON.stringify(arrayTask));
         showTasks(arrayTask);
     })
 };
 
-
 /////////////////////////////////////////////////
 //// Function to initialize some functions //////
 function init(){
+    if(localStorage.getItem('tasks')){
+        arrayTask = JSON.parse(localStorage.getItem('tasks'));
+    }
+    if(localStorage.getItem('counter')){
+        counter = parseInt(localStorage.getItem('counter'));
+    }
+    showTasks(arrayTask);
     addTask();
     deleteAllTasks();
 };

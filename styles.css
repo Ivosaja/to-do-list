@@ -1,3 +1,4 @@
+/* Global styles */
 *{
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ body{
     height: 100vh;
 }
 
+/* Main container */
 .container-todo-list{
     border: 1px solid #777;
     width: 100%;
@@ -45,10 +47,13 @@ body{
     color: rgb(179, 55, 55);
     display: flex;
     align-items: center;
+    transform: scale(1);
+    transition: transform 0.2s ease;
 }
 
 .container-input i:hover{
     color: rgb(236, 121, 121);
+    transform: scale(1.1);
 }
 
 .container-input input{
@@ -94,5 +99,12 @@ input[type="checkbox"]{
 .tasks-list i:hover{
     color: red;
     transition: 0.3s;
+}
+
+/* Media queries */
+@media (max-width: 950px){
+    .container-todo-list{
+        width: 100%;
+    }
 }
 

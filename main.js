@@ -16,13 +16,17 @@ function showTasks(arrayTasks){
             tasks += `  <li>
                             <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
                             <span class="task-content" style="text-decoration:line-through;color:gray">${arrayTasks[i].content}</span>
-                            <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                            <div class="container-icon">
+                                <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                            </div>
                         </li>`;
         }else{
             tasks += `  <li>
                             <input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
                             <span class="task-content">${arrayTasks[i].content}</span>
-                            <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                            <div class="container-icon">
+                                <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                            </div>
                         </li>`;
         }
     };

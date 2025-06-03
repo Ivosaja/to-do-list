@@ -41,7 +41,7 @@ function showTasks(arrayTasks){
         };
     }
     tasksList.innerHTML = tasks;
-    showAmountOfTask();
+    showAmountOfTasks();
 };
 
 ///////////////////////////////////////////////////////
@@ -101,8 +101,8 @@ function deleteAllTasks(){
 
 /////////////////////////////////////////////////////////////////////
 ////////// Function to see the amount of tasks in the list //////////
-function showAmountOfTask(){
-    counterTasks.innerHTML = `<strong>${arrayTask.length}</strong>`;
+function showAmountOfTasks(){
+    counterTasks.textContent = arrayTask.length;
 }
 
 /////////////////////////////////////////////////

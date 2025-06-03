@@ -49,23 +49,25 @@ function showTasks(arrayTasks){
 function addTask(){
     inputTask.addEventListener('keyup', (e) => {
         if(e.key === 'Enter'){
-            const inputLengthValidated = validateLengthInput(inputTask.value);
-            if(!inputLengthValidated){
-                // TODO: Validate if the input value is an empty string
-                arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
-                counter ++;
-                inputTask.value = '';
-                localStorage.setItem('counter', counter);
-                localStorage.setItem('tasks', JSON.stringify(arrayTask));
-                showTasks(arrayTask);
+            if(isTooLong(inputTask.value)){
+                return;
             }
+            if(isEmpty(inputTask.value)){
+                return;
+            }
+            arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
+            counter ++;
+            inputTask.value = '';
+            localStorage.setItem('counter', counter);
+            localStorage.setItem('tasks', JSON.stringify(arrayTask));
+            showTasks(arrayTask);
         };
     });
 };
 
 ////////////////////////////////////////////////////////////////
 ///////// Function to validate the length of the input /////////
-function validateLengthInput(inputValue){
+function isTooLong(inputValue){
     let inputTooLong = false;
     if(inputValue.length > 20){
         alert('The task must have only 20 letters.')
@@ -74,6 +76,11 @@ function validateLengthInput(inputValue){
     return inputTooLong;
 }
 
+/////////////////////////////////////////////////////////////////////
+//////// Function to validate if the input is an empty string ///////
+function isEmpty(inputValue){
+    return inputValue.trim() === '' ? true : false;
+}
 
 /////////////////////////////////////////////////////
 //////// Function to mark a task as completed ///////

@@ -13,7 +13,7 @@ let counter = 0;
 function showTasks(arrayTasks){
     let tasks = '';
     if(arrayTasks.length === 0){
-        tasks += `<p id="info-tasks">No hay tareas pendientes</p>`
+        tasks += `<p id="info-tasks">There is no pending task</p>`
     }
     else{
         for(let i = 0; i < arrayTasks.length; i++){
@@ -49,16 +49,31 @@ function showTasks(arrayTasks){
 function addTask(){
     inputTask.addEventListener('keyup', (e) => {
         if(e.key === 'Enter'){
-            // TODO: Validate if the input value is an empty string
-            arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
-            counter ++;
-            inputTask.value = '';
-            localStorage.setItem('counter', counter);
-            localStorage.setItem('tasks', JSON.stringify(arrayTask));
-            showTasks(arrayTask);
+            const inputLengthValidated = validateLengthInput(inputTask.value);
+            if(!inputLengthValidated){
+                // TODO: Validate if the input value is an empty string
+                arrayTask.push({id: counter + 1, content: inputTask.value, completed:false});
+                counter ++;
+                inputTask.value = '';
+                localStorage.setItem('counter', counter);
+                localStorage.setItem('tasks', JSON.stringify(arrayTask));
+                showTasks(arrayTask);
+            }
         };
     });
 };
+
+////////////////////////////////////////////////////////////////
+///////// Function to validate the length of the input /////////
+function validateLengthInput(inputValue){
+    let inputTooLong = false;
+    if(inputValue.length > 20){
+        alert('The task must have only 20 letters.')
+        inputTooLong = true;
+    }
+    return inputTooLong;
+}
+
 
 /////////////////////////////////////////////////////
 //////// Function to mark a task as completed ///////

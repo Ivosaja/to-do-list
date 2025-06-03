@@ -3,6 +3,7 @@
 const inputTask = document.getElementById('taskInput');
 const tasksList = document.querySelector('.tasks-list');
 const binTrash = document.getElementById('btn-binTrash');
+const counterTasks = document.getElementById('counter-tasks')
 let arrayTask = [];
 let tasks = '';
 let counter = 0;
@@ -11,26 +12,36 @@ let counter = 0;
 ////// Function to show tasks /////
 function showTasks(arrayTasks){
     let tasks = '';
-    for(let i = 0; i < arrayTasks.length; i++){
-        if(arrayTasks[i].completed){
-            tasks += `  <li>
-                            <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
-                            <span class="task-content" style="text-decoration:line-through;color:gray">${arrayTasks[i].content}</span>
-                            <div class="container-icon">
-                                <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
-                            </div>
-                        </li>`;
-        }else{
-            tasks += `  <li>
-                            <input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
-                            <span class="task-content">${arrayTasks[i].content}</span>
-                            <div class="container-icon">
-                                <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
-                            </div>
-                        </li>`;
-        }
-    };
+    if(arrayTasks.length === 0){
+        tasks += `<p id="info-tasks">No hay tareas pendientes</p>`
+    }
+    else{
+        for(let i = 0; i < arrayTasks.length; i++){
+            if(arrayTasks[i].completed){
+                tasks += `  <li>
+                                <div class="container-info-item">
+                                    <input type="checkbox" checked onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
+                                    <span class="task-content" style="text-decoration:line-through;color:gray">${arrayTasks[i].content}</span>
+                                </div>
+                                <div class="container-icon">
+                                    <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                                </div>
+                            </li>`;
+            }else{
+                tasks += `  <li>
+                                <div class="container-info-item">
+                                    <input type="checkbox" onclick="hightlightAsCompleted(event, ${arrayTasks[i].id})">
+                                    <span class="task-content">${arrayTasks[i].content}</span>
+                                </div>
+                                <div class="container-icon">
+                                    <i class="fa-solid fa-xmark" onclick="deleteTask(${arrayTasks[i].id})"></i>
+                                </div>
+                            </li>`;
+            }
+        };
+    }
     tasksList.innerHTML = tasks;
+    showAmountOfTask();
 };
 
 ///////////////////////////////////////////////////////
@@ -87,6 +98,12 @@ function deleteAllTasks(){
         showTasks(arrayTask);
     })
 };
+
+/////////////////////////////////////////////////////////////////////
+////////// Function to see the amount of tasks in the list //////////
+function showAmountOfTask(){
+    counterTasks.innerHTML = `<strong>${arrayTask.length}</strong>`;
+}
 
 /////////////////////////////////////////////////
 //// Function to initialize some functions //////

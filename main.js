@@ -94,7 +94,7 @@ function deleteAllTasks(){
     binTrash.addEventListener('click', () =>{
         arrayTask = [];
         counter = 0;
-        localStorage.setItem('tasks', JSON.stringify(arrayTask));
+        localStorage.clear();
         showTasks(arrayTask);
     })
 };

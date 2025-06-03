@@ -50,6 +50,7 @@ body{
     gap: 0.4rem;
 }
 .info-counter-tasks i{
+    color: rgb(3, 3, 44);
     font-size: 1.2rem;
 }
 

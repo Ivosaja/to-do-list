@@ -69,7 +69,7 @@ function addTask(){
 ///////// Function to validate the length of the input /////////
 function isTooLong(inputValue){
     let inputTooLong = false;
-    if(inputValue.length > 20){
+    if(inputValue.length > 35){
         alert('The task must have only 20 letters.')
         inputTooLong = true;
     }
